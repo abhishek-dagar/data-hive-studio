@@ -9,15 +9,14 @@ import SubSideBar from "@/components/navbar/sub-sidebar";
 import { useResizable } from "@/providers/resizable-provider";
 import { ImperativePanelHandle } from "react-resizable-panels";
 import resizableConfig from "@/config/resizableConfig";
-import SideBarTables from "@/components/views/sidebar-tables";
 
-const EditorLayout = ({ children }: { children: React.ReactNode }) => {
+const CustomApiLayout = ({ children }: { children: React.ReactNode }) => {
   const activeId = "editor-sidebar";
   const { getResizableState, toggleResizable, handleResizeCollapse } =
     useResizable();
   const ref = useRef<ImperativePanelHandle>(null);
   const resizableState = getResizableState(activeId);
-  const { defaultSizes, minSizes, maxSizes } = resizableConfig.editor;
+  const { defaultSizes, minSizes, maxSizes } = resizableConfig.customApi;
   const [isFirstRender, setIsFirstRender] = useState(true);
 
   useEffect(() => {
@@ -44,9 +43,7 @@ const EditorLayout = ({ children }: { children: React.ReactNode }) => {
         onExpand={() => handleResizeCollapse(false, activeId)}
         collapsible
       >
-        <SubSideBar>
-          <SideBarTables />
-        </SubSideBar>
+        <SubSideBar>test</SubSideBar>
       </ResizablePanel>
       <ResizableHandle className="!w-2 bg-background" />
       <ResizablePanel
@@ -61,4 +58,4 @@ const EditorLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default EditorLayout;
+export default CustomApiLayout;
